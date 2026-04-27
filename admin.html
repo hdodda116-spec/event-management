@@ -1,0 +1,281 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Admin Login | SEVEN'S EVENTS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap + Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{ font-family:'Poppins',sans-serif; }
+/* BACKGROUND */
+body{
+    min-height:100vh;    
+    background:linear-gradient(120deg,#0f2027,#203a43,#2c5364);
+    background-size:300% 300%;
+    animation:bgFlow 12s ease infinite;
+    padding-top:90px;
+}
+@keyframes bgFlow{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+/* FLOATING LIGHTS */
+.orb{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(80px);
+    opacity:.45;
+    animation:float 10s infinite alternate ease-in-out;
+}
+.orb.one{width:300px;height:300px;background:#00f5d4;top:10%;left:5%;}
+.orb.two{width:350px;height:350px;background:#3a86ff;bottom:10%;right:5%;}
+@keyframes float{
+    from{transform:translateY(0)}
+    to{transform:translateY(-60px)}
+}
+/* LOGIN CARD */
+.login-wrapper{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.login-card{
+    width:100%;
+    max-width:420px;
+    background:rgba(255,255,255,0.95);
+    padding:40px;
+    border-radius:22px;
+    box-shadow:0 30px 60px rgba(0,0,0,.35);
+    animation:slideFade .9s ease forwards;
+}
+@keyframes slideFade{
+    from{opacity:0;transform:translateY(40px)}
+    to{opacity:1;transform:translateY(0)}
+}
+.login-title{font-weight:700;text-align:center;}
+.login-sub{text-align:center;color:#666;font-size:.9rem;margin-bottom:25px;}
+.input-group-text{
+    background:#f1f3f5;
+    border-radius:14px 0 0 14px;
+}
+.form-control{
+    border-radius:0 14px 14px 0;
+}
+.form-control:focus{
+    border-color:#3a86ff;
+    box-shadow:0 0 0 .15rem rgba(58,134,255,.25);
+}
+.btn-login{
+    border-radius:30px;
+    padding:12px;
+    font-weight:600;
+    background:linear-gradient(135deg,#3a86ff,#00f5d4);
+    border:none;
+    transition:.4s;
+}
+.btn-login:hover{
+    transform:translateY(-3px) scale(1.03);
+    box-shadow:0 15px 30px rgba(0,0,0,.3);
+}
+.error-msg{
+    display:none;
+    color:#d00000;
+    text-align:center;
+    margin-top:12px;
+    font-weight:500;
+}
+.back-link{
+    display:block;
+    text-align:center;
+    margin-top:15px;
+    text-decoration:none;
+    font-weight:500;
+}
+.back-link:hover{text-decoration:underline;}
+/* NAVBAR */
+.custom-navbar {
+    background: rgba(15, 32, 39, 0.85);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    transition: all 0.4s ease;
+}
+.custom-navbar.scrolled {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background: rgba(10, 20, 30, 0.95);
+}
+/* BRAND */
+.brand-logo {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    color: #fff !important;
+}
+.brand-logo span {
+    color: #00f5d4;
+}
+/* LINKS */
+.nav-link {
+    position: relative;
+    font-weight: 500;
+    color: #ffffff !important;
+    padding: 8px 6px;
+    transition: color 0.3s ease;
+}
+.nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    left: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, #00f5d4, #3a86ff);
+    transition: width 0.35s ease;
+}
+.nav-link:hover::after {
+    width: 100%;
+}
+.nav-link.active {
+    color: #00f5d4 !important;
+}
+
+.nav-link.active::after {
+    width: 100%;
+}
+/* REGISTER BUTTON */
+.highlight-link {
+    padding: 8px 18px !important;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #00f5d4, #3a86ff);
+    color: #000 !important;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.highlight-link::after {
+    display: none;
+}
+.highlight-link:hover {
+    transform: scale(1.08);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+/* ADMIN */
+.admin-link {
+    opacity: 0.75;
+}
+.admin-link:hover {
+    opacity: 1;
+}
+/* HERO */
+.hero {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+}
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    animation: heroFade 1s ease forwards;
+}
+.hero p {
+    font-size: 1.2rem;
+    opacity: 0.85;
+}
+@keyframes heroFade {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+</head>
+<body>
+<!-- FLOATING EFFECTS -->
+<div class="orb one"></div>
+<div class="orb two"></div>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg fixed-top custom-navbar">
+    <div class="container-fluid px-4">
+        <a class="navbar-brand fw-bold brand-logo" href="index.html">
+            SEVEN<span>'</span>S EVENTS
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link highlight-link" href="events.html">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="feedback.html">Feedback</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link admin-link" href="admin.html">Admin</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- LOGIN -->
+<div class="container login-wrapper">
+    <div class="login-card">
+        <h3 class="login-title">Admin Login</h3>
+        <p class="login-sub">Secure access to dashboard</p>
+        <form onsubmit="return validateLogin()">
+            <div class="input-group mb-3">
+                <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                <input type="text" id="username" class="form-control" placeholder="Username" required>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                <input type="password" id="password" class="form-control" placeholder="Password" required>
+            </div>
+            <button class="btn btn-login w-100">Login</button>
+            <a href="index.html" class="back-link">← Back to Home</a>
+            <div class="error-msg" id="errorMsg"></div>
+        </form>
+    </div>
+</div>
+<script>
+/* ADMIN CREDENTIALS */
+const ADMIN_USERNAME = "hemanth";
+const ADMIN_PASSWORD = "Hemanth@123";
+/* AUTO REDIRECT IF LOGGED IN */
+if(localStorage.getItem("isAdminLoggedIn") === "true"){
+    window.location.href = "dashboard.html";
+}
+/* LOGIN FUNCTION */
+function validateLogin(){
+    const user = document.getElementById("username").value.trim();
+    const pass = document.getElementById("password").value.trim();
+    const err  = document.getElementById("errorMsg");
+    if(user === ADMIN_USERNAME && pass === ADMIN_PASSWORD){
+        localStorage.setItem("isAdminLoggedIn","true");
+        alert("Login Successful!");
+        window.location.href = "dashboard.html";
+    } else {
+        err.style.display = "block";
+        err.innerText = "Invalid Username or Password";
+    }
+    return false;
+}
+</script>
+</body>
+</html>
